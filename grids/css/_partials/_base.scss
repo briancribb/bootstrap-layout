@@ -1,0 +1,113 @@
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+html, body {
+	height: 100%;
+	margin:0;
+}
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	//margin-bottom:60px; // Sticky footer style. Might be resized by JavaScript.
+	background: $color__bg;
+	overflow-y: hidden;
+}
+
+img[width],
+img[height] {
+  max-width: 100%;
+  height:auto;
+}
+
+.scroll-container {
+	height: 100%;
+	z-index:0;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+.scroll-content {
+	min-height: 100%;
+	position: relative;
+}
+//.sticky-wrapper {
+//	padding-bottom:60px;
+//}
+.site-container, .main-footer {
+	//padding:0 20px 0 $mainnav__padding;
+	//padding:0 $content__side-padding 0 $mainnav__width+$content__side-padding;
+	padding:0 $content__side-padding 0;
+}
+
+
+// Masthead
+.masthead {
+	position: relative;
+	overflow:hidden;
+	//background: url('../img/sassyass_logo.png') center center no-repeat;
+	background: $color1--darker;
+	height:auto;
+}
+	.site-logo {
+		display:block;
+		position:static;
+		margin: 0;
+	}
+	.site-banner {
+		//background: url('../img/bg_header01.jpg') center center;
+		//background: url('../img/header-banner.png') no-repeat center bottom;
+		//height:260px;
+		width:100%;
+	}
+
+// Main Footer
+// ================================
+.main-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px; // Sticky footer style. Might be resized by JavaScript.
+	//background-color: $color1--darker;
+	z-index:0;
+}
+.main-footer-content {
+	//padding:$base-spacing-unit $content__side-padding 0 $content__side-padding;
+	padding-top: $base-spacing-unit;
+	padding-bottom:0;
+}
+
+
+// Media Queries
+// ================================
+/*
+@media only screen and (max-width: 300px) {
+	.masthead {
+		height: 260px;
+	}
+		.site-logo {
+			top:50px;
+			bottom:auto;
+		}
+}
+*/
+
+/*
+@include media-query(palm){
+
+}
+@include media-query(lap){
+
+}
+*/
+
+
+
+
+@include media-query(desk){
+	.site-container, .main-footer {
+		padding-right:$content__side-padding*2;
+		padding-left:$content__side-padding*2;
+	}
+}
