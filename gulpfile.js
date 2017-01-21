@@ -7,13 +7,27 @@ var jshint = require('gulp-jshint');
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
 	cleanCSS = require('gulp-clean-css'),
-	//bless = require('gulp-bless'),
 	//gutil = require('gulp-util'),
 	rename = require('gulp-rename'),
 	babel = require('gulp-babel');
 
 
 
+/*
+Terminal command should include the target folder. Here's an example using menu-left:
+gulp myTask --option menu-left
+
+The "--option" needs to be there so Gulp knows that we're passing arguments instead of 
+task names. The value needs to appear after "--option", but otherwise it doesn't matter 
+how many arguments we're passing.
+
+The function finds the index of "--option" in the arguments array and returns the value 
+after that.
+*/
+function getOptionIndex(args) {
+	var flag = args.indexOf("--option");
+	return args[flag+1];
+}
 
 
 // Lint Task
@@ -25,67 +39,55 @@ gulp.task('lint', function() {
 
 
 
+
 // Compile Our Sass
-gulp.task('sass-menu-left', function() {
-	return gulp.src('menu-left/css/style.scss')
+gulp.task('sass', function() {
+	var strFolder = process.argv[3]+'/' || 'nothing-set';
+	//console.log('sass: ' + getOptionIndex(process.argv) );
+
+	gulp.src(strFolder+'css/style.scss')
 		.pipe(sass())
-		.pipe(gulp.dest('menu-left/dist/css'))
+		.pipe(gulp.dest(strFolder+'dist/css'))
 		.pipe(rename('style.min.css'))
 		.pipe(cleanCSS())
-		.pipe(gulp.dest('menu-left/dist/css'));
+		.pipe(gulp.dest(strFolder+'dist/css'));
+
 });
 
-// Split our CSS for IE selector limits.
-gulp.task('bless', function() {
-	gulp.src('dist/css/style.css')
-		.pipe(rename('style-ie.css'))
-		.pipe(bless({
-			imports:false,
-			suffix: '-'
-		}))
-		.pipe(gulp.dest('dist/css'));
+// Concatenate & Minify JS
+gulp.task('scripts', function() {
+	console.log('scripts: ' + getOptionIndex(process.argv) );
+	/*
+	return gulp
+		.src([
+			'assets/js/manage-layout.js',
+			'assets/js/components.js'
+		])
+		.pipe( babel({
+			only: ['assets/js/components.js'],
+			presets: ['react', 'es2015'],
+			compact:false
+		}) )
+		.pipe(concat('all.js'))
+		.pipe(gulp.dest('assets/js'))
+		.pipe(rename('all.min.js'))
+		.pipe(uglify())
+		//.pipe(uglify().on('error', gutil.log))
+		.pipe(gulp.dest('assets/js'));
+	*/
 });
 
-/*
-Minify everything. This is separate because bless gets buggy when using minified files 
-as the source. The developer recommends running bless BEFORE files are minified.
-
-The bless package numbers the files backwards, with "style-02" being the first file.
-This task corrects for that with new numbering. It must run as a separate task after 
-the bless task, but may be combined as shown in the "split" task below. After testing, 
-"bless" and "bless-min" can be placed in the default task with everything else. However, 
-these must run after the "sass" task.
-*/
-gulp.task('min', function() {
-	gulp.src('dist/css/style.css')
-		.pipe(rename('style.min.css'))
-		.pipe(cleanCSS())
-		.pipe(gulp.dest('dist/css'));
-
-	gulp.src('dist/css/style-ie-2.css')
-		.pipe(rename('style-ie-2.min.css'))
-		.pipe(cleanCSS())
-		.pipe(gulp.dest('dist/css'));
-
-	gulp.src('dist/css/style-ie-1.css')
-		.pipe(rename('style-ie-1.min.css'))
-		.pipe(cleanCSS())
-		.pipe(gulp.dest('dist/css'));
-
-	gulp.src('dist/css/style-ie.css')
-		.pipe(rename('style-ie.min.css'))
-		.pipe(cleanCSS())
-		.pipe(gulp.dest('dist/css'));
-});
 
 
 // Watch Files For Changes
 gulp.task('watch', function() {
+	var strFolder = process.argv[3]+'/' || 'nothing-set';
+	//console.log('watch: ' + getOptionIndex(process.argv) );
 	//gulp.watch('js/theme/*.js', ['lint', 'scripts']);
-	gulp.watch('js/theme/*.js', ['scripts-deferred']);
-	gulp.watch('css/theme/_partials/*.scss', ['sass']);
-	gulp.watch('css/theme/vars.scss', ['sass']);
-	gulp.watch('css/theme/style.scss', ['sass']);
+	//gulp.watch('js/theme/*.js', ['scripts-deferred']);
+	gulp.watch(strFolder+'css/_partials/*.scss', ['sass']);
+	gulp.watch(strFolder+'css/_custom.scss', ['sass']);
+	gulp.watch(strFolder+'css/style.scss', ['sass']);
 });
 
 
@@ -110,8 +112,8 @@ you commit.
 */
 
 // Use this if you haven't installed bless yet.
-gulp.task('default', ['sass', 'scripts-deferred', 'watch']);
-
+gulp.task('default', ['sass', 'scripts', 'watch']);
+gulp.task('layout', ['sass', 'scripts', 'watch']);
 
 
 
@@ -144,122 +146,4 @@ Gulp is trying to build the "AE.min.js" file, so that's the name it will display
 However, the line number displayed is from the "AE.js" file that it just concatenated and saved. 
 That's good news, because you can just scroll to that line in "AE.js" and find out which source 
 file caused the problem.
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-JavaScript module tree, to show dependencies.
-
-- AE.js
-	- AE.account.js
-	- AE.booking.js
-		- AE.booking.savequote.js
-		- AE.booking.terms.js
-		- AE.booking.matrix.js
-			- AE.booking.matrix.results.js
-		- AE.booking.optequip.js
-	- AE.cookie.js
-	- AE.forms.js
-	- AE.tracking.dimensions.js
-	- AE.tracking.ga.js
-	- AE.init.js
-	- AE.legacy.js
-	- AE.maps.js
-	- AE.mura.js
-	- AE.nav.js
-	- AE.newsletter.js
-	- AE.template.js
-	- AE.ui.js
-		- AE.ui.datepicker.js
-		- AE.ui.tabcordion.js
-		- AE.ui.dialog.js
-		- AE.ui.modify.js
-		- AE.ui.autocomplete.js
-		- AE.ui.selectmenu.js
-	- AE.utils.js
-
-
-
-=====================
-Setting up Gulp
-=====================
-
-
-There are two files that will be version controlled for Gulp. They are: 
-package.json	: A general description of this project. It must be present, but we can update as needed. 
-gulpfile.js		: This file that you're reading! It has all the instructions for what Gulp is going to do for us.
-
-
-To get started, Node must be installed. There's an installer on the official site.
-https://nodejs.org/en/
-
-
-Here's an excellent article that will walk you through setting up Gulp:
-https://travismaynard.com/writing/getting-started-with-gulp
-
-
-There's a "gotcha" in that article, however. The "gulp-jshint" plugin has a dependence of "jshint". So the big install 
-command that Travis Maynard's article gives you needs to include "jshint" in front of "gulp-jshint". It also needs to 
-include a way to minify the CSS since the gulp-uglify plugin only handles JavaScript. Here's the completed command: 
-
-npm install jshint gulp-jshint gulp-sass gulp-concat gulp-uglify clean-css gulp-clean-css gulp-rename gulp-livereload --save-dev
-
-Here's an explanation on why that is:
-https://github.com/olefredrik/FoundationPress/issues/664
-
-
-Just in case you need it, I've also written my own blog post on how I set up Gulp. It mostly just goes over the stuff 
-written above, but here's the url:
-http://www.themightycribb.com/how-i-got-started-with-gulp/
-
-=====================
-Watching Files: 
-=====================
-If you include the 'watch' task, then Gulp will keep running in the terminal. When a file in a watched folder gets 
-saved, the 'watch' task will run. This will keep running until you enter Control+C to stop it. If you don't want to 
-run it that way, then you could just type "gulp" when you want to update the files. We've defined a default task, so 
-we don't have to name it. (Although we could enter "gulp default" if we want to.)
-
-
-
-* Probably don't need this part, but just in case: *
-=======================================================================================================================
-I didn't have any permission problems, but if you do then this might help: 
-https://docs.npmjs.com/getting-started/fixing-npm-permissions
-
-But it also leaves something out. The video expects you to edit a text file in the terminal but doesn't say what 
-keyboard commands were needed to get this done. Here's a reference for that: 
-http://stackoverflow.com/questions/37365179/open-a-file-in-editor-and-then-save-it-back-by-terminal-on-bash
 */

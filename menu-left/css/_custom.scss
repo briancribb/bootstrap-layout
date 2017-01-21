@@ -2,3 +2,23 @@
 //
 // Copy variables from `_variables.scss` to this file to override default values
 // without modifying source files.
+// NOTE: Only altered variables will be copied to this file.
+
+
+
+// COLORS
+// ==================================================
+
+
+
+
+// Main Navigation...
+$mainnav__width:			160px;
+$mainnav__padding:			200px;
+
+
+
+
+
+// Font Awesome overrides.
+$fa-font-path:        "../../../vendor/font-awesome-4.7.0/fonts";
