@@ -4,7 +4,9 @@
 		init : function() {
 			APP.props = {
 				$bodyElement		: $('body'),
-				//$navbar				: $('#navbar'),
+				$topBar				: $('#topbar'),
+				$mainNav			: $('#mainnav'),
+				$mainNavList		: $('#mainnav > ul'),
 				$mainFooter			: $('#main-footer'),
 				$mainFooterContent	: $('#main-footer-content'),
 				$mainNavToggle		: $( '#topbar .toggle')
@@ -14,21 +16,30 @@
 
 			APP.addResizeTask({
 				func: function() {
-					console.log('Adjusting the footer.');
-					var footerHeight = APP.props.$mainFooterContent.outerHeight(true);
+
+					var topBarHeight = APP.props.$topBar.outerHeight(true),
+						footerHeight = APP.props.$mainFooterContent.outerHeight(true);
+
 					APP.props.$mainFooter.height( footerHeight );
 
 					// Correct footer height upon resize and correct top body padding for navbar height
+					APP.props.$topBar.css({
+						'position'			: 'fixed',
+						'top'				: '0'
+					});
+					//APP.props.$mainNav.css({
+					//	'padding-top'		: topBarHeight
+					//});
 					APP.props.$bodyElement.css({
-						'padding-bottom':footerHeight//,
-						//'padding-top':APP.props.$navbar.outerHeight(true)
+						'padding-top'		:topBarHeight,
+						'padding-bottom'	:footerHeight//,
 					});
 				},
 				args:[] // No arguments, so it's an empty array.
 			});
 
 
-			APP.manageResize();
+			//APP.manageResize();
 			/*
 			Setup throttling for resize tasks. Run the manageResize function once upon init. This part relies upon having UnderscoreJS
 			loaded along with jQuery. It runs all resize tasks every quarter-second.
