@@ -26,7 +26,7 @@ after that.
 */
 function getOptionIndex(args) {
 	var flag = args.indexOf("--option");
-	return args[flag+1];
+	return args[flag+1] + '/';
 }
 
 
@@ -42,10 +42,13 @@ gulp.task('lint', function() {
 
 // Compile Our Sass
 gulp.task('sass', function() {
-	var strFolder = process.argv[3]+'/' || 'nothing-set';
-	//console.log('sass: ' + getOptionIndex(process.argv) );
+	console.log('sass: ' + getOptionIndex(process.argv) );
+	var strFolder = getOptionIndex(process.argv);
 
-	gulp.src(strFolder+'css/style.scss')
+	gulp.src([
+			strFolder+'css/ie10-viewport-bug-workaround.css',
+			strFolder+'css/style.scss'
+		])
 		.pipe(sass())
 		.pipe(gulp.dest(strFolder+'dist/css'))
 		.pipe(rename('style.min.css'))
@@ -57,34 +60,29 @@ gulp.task('sass', function() {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
 	console.log('scripts: ' + getOptionIndex(process.argv) );
-	/*
+	var strFolder = getOptionIndex(process.argv);
+
 	return gulp
 		.src([
-			'assets/js/manage-layout.js',
-			'assets/js/components.js'
+			strFolder+'js/ie10-viewport-bug-workaround.js',
+			strFolder+'js/custom.js'
 		])
-		.pipe( babel({
-			only: ['assets/js/components.js'],
-			presets: ['react', 'es2015'],
-			compact:false
-		}) )
 		.pipe(concat('all.js'))
-		.pipe(gulp.dest('assets/js'))
+		.pipe(gulp.dest(strFolder+'dist/js'))
 		.pipe(rename('all.min.js'))
 		.pipe(uglify())
 		//.pipe(uglify().on('error', gutil.log))
-		.pipe(gulp.dest('assets/js'));
-	*/
+		.pipe(gulp.dest(strFolder+'dist/js'));
 });
 
 
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-	var strFolder = process.argv[3]+'/' || 'nothing-set';
-	//console.log('watch: ' + getOptionIndex(process.argv) );
-	//gulp.watch('js/theme/*.js', ['lint', 'scripts']);
-	//gulp.watch('js/theme/*.js', ['scripts-deferred']);
+	console.log('watch: ' + getOptionIndex(process.argv) );
+	var strFolder = getOptionIndex(process.argv);
+	//gulp.watch(strFolder+'js/theme/*.js', ['lint', 'scripts']);
+	gulp.watch(strFolder+'js/theme/*.js', ['scripts-deferred']);
 	gulp.watch(strFolder+'css/_partials/*.scss', ['sass']);
 	gulp.watch(strFolder+'css/_custom.scss', ['sass']);
 	gulp.watch(strFolder+'css/style.scss', ['sass']);
@@ -113,7 +111,7 @@ you commit.
 
 // Use this if you haven't installed bless yet.
 gulp.task('default', ['sass', 'scripts', 'watch']);
-gulp.task('layout', ['sass', 'scripts', 'watch']);
+//gulp.task('layout', ['sass', 'scripts', 'watch']);
 
 
 
