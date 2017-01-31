@@ -28,9 +28,10 @@
 		init : function() {
 			APP.props = {
 				$bodyElement		: $('body'),
-				//$navbar				: $('#navbar'),
-				$mainFooter			: $('#main-footer'),
 				$topBar				: $('#topbar'),
+				$mainNav			: $('#mainnav'),
+				$mainNavList		: $('#mainnav > ul'),
+				$mainFooter			: $('#main-footer'),
 				$mainFooterContent	: $('#main-footer-content'),
 				$mainNavToggle		: $( '#topbar .toggle')
 			};
@@ -47,9 +48,12 @@
 
 					// Correct footer height upon resize and correct top body padding for navbar height
 					APP.props.$topBar.css({
-						'position'	: 'fixed',
-						'top'		: '0'
+						'position'			: 'fixed',
+						'top'				: '0'
 					});
+					//APP.props.$mainNav.css({
+					//	'padding-top'		: topBarHeight
+					//});
 					APP.props.$bodyElement.css({
 						'padding-top'		:topBarHeight,
 						'padding-bottom'	:footerHeight//,

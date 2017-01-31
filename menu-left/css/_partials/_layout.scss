@@ -42,8 +42,8 @@ body {
 .mainnav {
 	position:fixed;
 	top:2.25rem;
-	left: -$mainnav__width;
-	width: $mainnav__width;
+	left: -15rem;
+	width: 15rem;
 	height:100%;
 	z-index:1;
 	background: #ddd;
@@ -93,5 +93,11 @@ body {
 
 
 @include media-breakpoint-up(md) {
-
+	.site-container, .main-footer {
+		padding-left: 9rem;
+	}
+	.mainnav {
+		left:0;
+		width: 9rem;
+	}
 }

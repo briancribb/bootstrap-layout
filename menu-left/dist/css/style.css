@@ -7232,6 +7232,10 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 /*!
  * And now our local stuff:
  */
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem; }
+
 html, body {
   position: relative; }
 
@@ -7242,23 +7246,9 @@ img[height] {
 	height:auto;
 }
 */
-body {
-  padding-top: 2.25rem; }
-
-.site-container {
-  padding-top: 1rem; }
-
-.main-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: auto;
-  background-color: #acaaca; }
-
-.main-footer-content {
-  border-top: 1px solid #337ab7;
-  padding: 20px; }
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem; }
 
 html {
   font-size: 14px; }
@@ -7274,6 +7264,12 @@ html {
 @media (min-width: 992px) {
   html {
     font-size: 28px; } }
+
+body {
+  padding-top: 2.25rem; }
+
+.site-container {
+  padding-top: 1rem; }
 
 .topbar {
   position: fixed;
@@ -7304,8 +7300,8 @@ html {
 .mainnav {
   position: fixed;
   top: 2.25rem;
-  left: -160px;
-  width: 160px;
+  left: -15rem;
+  width: 15rem;
   height: 100%;
   z-index: 1;
   background: #ddd;
@@ -7333,3 +7329,22 @@ html {
 		background: $color1--lighter;
 	}
 	*/ }
+
+.main-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+  background-color: #acaaca; }
+
+.main-footer-content {
+  border-top: 1px solid #337ab7;
+  padding: 20px; }
+
+@media (min-width: 768px) {
+  .site-container, .main-footer {
+    padding-left: 9rem; }
+  .mainnav {
+    left: 0;
+    width: 9rem; } }
