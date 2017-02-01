@@ -17,7 +17,7 @@
 			APP.addResizeTask({
 				func: function() {
 
-					var topBarHeight = APP.props.$topBar.outerHeight(true),
+					var topBarHeight = APP.props.size APP.props.$topBar.outerHeight(true),
 						footerHeight = APP.props.$mainFooterContent.outerHeight(true);
 
 					APP.props.$mainFooter.height( footerHeight );
@@ -28,10 +28,10 @@
 						'top'				: '0'
 					});
 					//APP.props.$mainNav.css({
-					//	'padding-top'		: topBarHeight
+					//	'top'		: topBarHeight
 					//});
 					APP.props.$bodyElement.css({
-						'padding-top'		:topBarHeight,
+						//'padding-top'		:topBarHeight+1,
 						'padding-bottom'	:footerHeight//,
 					});
 				},

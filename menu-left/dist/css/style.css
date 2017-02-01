@@ -7236,6 +7236,18 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   padding-left: 1rem;
   padding-right: 1rem; }
 
+.trans-left {
+  -webkit-transition: left .25s linear;
+  transition: left .25s linear; }
+
+.trans-padding {
+  -webkit-transition: padding .25s linear;
+  transition: padding .25s linear; }
+
+.trans-bg-position {
+  -webkit-transition: background-position .5s linear;
+  transition: background-position .5s linear; }
+
 html, body {
   position: relative; }
 
@@ -7246,9 +7258,12 @@ img[height] {
 	height:auto;
 }
 */
-.container {
-  padding-left: 1rem;
-  padding-right: 1rem; }
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
 
 html {
   font-size: 14px; }
@@ -7269,6 +7284,7 @@ body {
   padding-top: 2.25rem; }
 
 .site-container {
+  position: relative;
   padding-top: 1rem; }
 
 .topbar {
@@ -7292,8 +7308,9 @@ body {
     height: 100%;
     display: block;
     background: #BADA55;
-    padding: .25rem 0;
-    font-size: 1.25rem; }
+    padding: .5rem 0;
+    font-size: 1.25rem;
+    line-height: 1; }
   .topbar a:hover {
     background: #aabbcc; }
 
@@ -7329,6 +7346,17 @@ body {
 		background: $color1--lighter;
 	}
 	*/ }
+  .mainnav ul {
+    margin: 0;
+    background-color: #ccc; }
+    .mainnav ul li {
+      border-bottom: 1px solid #000; }
+      .mainnav ul li a {
+        padding: .5em;
+        display: block; }
+
+.mainnav.open {
+  left: 0; }
 
 .main-footer {
   position: absolute;
@@ -7343,8 +7371,11 @@ body {
   padding: 20px; }
 
 @media (min-width: 768px) {
+  body {
+    padding-top: 0; }
   .site-container, .main-footer {
     padding-left: 9rem; }
   .mainnav {
-    left: 0;
+    left: 0; }
+  .topbar, .mainnav {
     width: 9rem; } }

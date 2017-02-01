@@ -8,7 +8,11 @@ img[height] {
 	height:auto;
 }
 */
-.container {
-	padding-left: 1rem;
-	padding-right: 1rem;
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
