@@ -7236,9 +7236,9 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   padding-left: 1rem;
   padding-right: 1rem; }
 
-.trans-left {
-  -webkit-transition: left .25s linear;
-  transition: left .25s linear; }
+.trans-right {
+  -webkit-transition: right .25s linear;
+  transition: right .25s linear; }
 
 .trans-padding {
   -webkit-transition: padding .25s linear;
@@ -7290,7 +7290,7 @@ body {
 .topbar {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   max-height: 2.25rem;
   z-index: 2; }
@@ -7317,7 +7317,7 @@ body {
 .mainnav {
   position: fixed;
   top: 2.25rem;
-  left: -15rem;
+  right: -15rem;
   width: 90%;
   max-width: 15rem;
   height: 100%;
@@ -7357,7 +7357,7 @@ body {
         display: block; }
 
 .mainnav.open {
-  left: 0; }
+  right: 0; }
 
 .main-footer {
   position: absolute;
@@ -7375,9 +7375,9 @@ body {
   body {
     padding-top: 0; }
   .site-container, .main-footer {
-    padding-left: 9rem; }
+    padding-right: 9rem; }
   .mainnav {
-    left: 0; }
+    right: 0; }
     .mainnav ul li a {
       padding: .5em; }
   .topbar, .mainnav {

@@ -11,7 +11,7 @@ body {
 .topbar {
 	position:fixed;
 	top:0;
-	left:0;
+	right:0;
 	width:100%;
 	max-height:2.25rem;
 
@@ -43,7 +43,7 @@ body {
 .mainnav {
 	position:fixed;
 	top: 2.25rem;
-	left: -15rem;
+	right: -15rem;
 	width: 90%;
 	max-width: 15rem;
 	height:100%;
@@ -86,7 +86,7 @@ body {
 	}
 }
 .mainnav.open {
-	left:0;
+	right:0;
 }
 
 
@@ -116,10 +116,10 @@ body {
 		padding-top:0;
 	}
 	.site-container, .main-footer {
-		padding-left: 9rem;
+		padding-right: 9rem;
 	}
 	.mainnav {
-		left:0;
+		right:0;
 		ul li a {
 			padding: .5em;
 		}
