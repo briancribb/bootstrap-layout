@@ -1,27 +1,3 @@
-/*!
- * IE10 viewport hack for Surface/desktop Windows 8 bug
- * Copyright 2014-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-// See the Getting Started docs for more information:
-// http://getbootstrap.com/getting-started/#support-ie10-width
-
-(function () {
-  'use strict';
-
-  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-    var msViewportStyle = document.createElement('style')
-    msViewportStyle.appendChild(
-      document.createTextNode(
-        '@-ms-viewport{width:auto!important}'
-      )
-    )
-    document.querySelector('head').appendChild(msViewportStyle)
-  }
-
-})();
-
 ;var SITE = SITE || (function(){
 	var APP = {
 		resizeTasks : [],
@@ -106,7 +82,7 @@
 				'click',
 				function(ev){
 					console.log(ev);
-					APP.props.$mainNav.addClass('trans-left').toggleClass('open');
+					APP.props.$mainNav.addClass('trans-right').toggleClass('open');
 				}
 			);
 
@@ -115,7 +91,7 @@
 			// popping into place.
 			APP.props.$mainNav.on( APP.props.transEnd, function() {
 				console.log('Transition complete!  This is the callback, no library needed!');
-				APP.props.$mainNav.removeClass('trans-left');
+				APP.props.$mainNav.removeClass('trans-right');
 			});
 
 		},

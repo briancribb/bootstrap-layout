@@ -7236,6 +7236,9 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   padding-left: 1rem;
   padding-right: 1rem; }
 
+input {
+  max-width: 100%; }
+
 .trans-left {
   -webkit-transition: left .25s linear;
   transition: left .25s linear; }
