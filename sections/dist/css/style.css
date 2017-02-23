@@ -8410,7 +8410,8 @@ html, body {
   text-align: center; }
   .main-nav .nav {
     display: inline-block;
-    background-color: white; }
+    background-color: white;
+    border-radius: 15px 15px 0 0; }
 
 .main-footer {
   position: absolute;

@@ -4,9 +4,11 @@
 		init : function() {
 			APP.props = {
 				$bodyElement		: $('body'),
+				$mainNavLinks		: $('#main-nav .nav-link'),
 				$jumbotrons			: $('.jumbotron-fluid'),
 				$mainFooter			: $('#main-footer'),
 				$mainFooterContent	: $('#main-footer-content'),
+				scrolling			: false,
 				size				: '',
 				breakpoints			: {
 					xs: 0,
@@ -30,7 +32,7 @@
 					for(t in transitions){
 						if( el.style[t] !== undefined ){
 							return transitions[t];
-						}
+						}selector
 					}
 				})()
 			};
@@ -74,9 +76,48 @@
 			$(window).resize(throttled);
 		},
 		addListeners : function() {
+			APP.props.$mainNavLinks.on('click', function(event){
+				event.preventDefault();
+
+
+				var ranOnce = false,
+					$target = $(this);
+
+
+				// If we're not already scrolling and the link clicked isn't disabled.
+				if ( !APP.props.scrolling ) {
+					var selector = $target.data('selector');
+					APP.props.scrolling = true;
+
+					//APP.props.$mainNavLinks.removeClass('disabled');
+					//$target.addClass('disabled');
+
+					console.log('Getting started. APP.props.scrolling = ' + APP.props.scrolling);
+
+					$('html,body').stop().animate(
+						{ scrollTop: $(selector).position().top },
+						500,
+						function() {
+							// Only run this once. Prevent possible double-run due to the use of "html,body".
+							if(!ranOnce) {
+								console.log('All done. APP.props.scrolling = ' + APP.props.scrolling);
+								APP.props.scrolling = false;
+								ranOnce = true;
+							}
+						}
+					);
+				}
+
+			});
 
 
 
+
+
+			// Scroll to a given vertical position. Used to find entries and to skip to the top or bottom.
+			function scrollToPosition(position) {
+				$('html,body').stop().animate( { scrollTop: position }, 1000 );
+			}
 		},
 		getSiteViewType : function() {
 			var sizes = APP.props.breakpoints,

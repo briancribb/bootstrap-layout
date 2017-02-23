@@ -4,6 +4,7 @@
 		init : function() {
 			APP.props = {
 				$bodyElement		: $('body'),
+				$mainNav			: $('#main-nav'),
 				$jumbotrons			: $('.jumbotron-fluid'),
 				$mainFooter			: $('#main-footer'),
 				$mainFooterContent	: $('#main-footer-content'),
@@ -35,7 +36,6 @@
 				})()
 			};
 
-
 			APP.addResizeTask({
 				func: function() {
 
@@ -44,7 +44,7 @@
 					// Update the height of jumbotrons.
 					APP.props.$jumbotrons.css({
 						'min-height'			: $(window).height()
-					});
+					}).removeClass('absolute-center');
 
 					APP.props.$jumbotrons.each(function(index){
 						var thisHeight = $(this).height(),
@@ -57,15 +57,6 @@
 						}
 					});
 
-
-					// Handle the size of the sticky footer.
-					/*
-					APP.props.$mainFooter.height( footerHeight );
-					APP.props.$bodyElement.css({
-						//'padding-top'		:topBarHeight+1,
-						'padding-bottom'	:footerHeight//,
-					});
-					*/
 
 					// Update the view type.
 					APP.props.size = APP.getSiteViewType();
@@ -84,6 +75,10 @@
 			$(window).resize(throttled);
 		},
 		addListeners : function() {
+			APP.props.$mainNav.on('click', function(event){
+				event.preventDefault();
+				console.log('Nav clicked.');
+			});
 
 
 
