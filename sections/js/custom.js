@@ -44,12 +44,17 @@
 
 					// Update the height of jumbotrons.
 					APP.props.$jumbotrons.css({
-						'min-height'			: $(window).height()
+						'min-height'			: window.screen.height//$(window).height()
 					}).removeClass('absolute-center');
 
 					APP.props.$jumbotrons.each(function(index){
 						var thisHeight = $(this).height(),
-							contentHeight = $(this).children('.container').height();
+							contentHeight = $(this).children('.container').outerHeight();
+
+							console.log('thisHeight = ' + thisHeight);
+							console.log('contentHeight = ' + contentHeight);
+							console.log('-- difference = ' + ((thisHeight - contentHeight) / 2) );
+							console.log(' ');
 
 						if(contentHeight < thisHeight ) {
 							$(this).css({
