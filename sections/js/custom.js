@@ -49,7 +49,7 @@
 
 					APP.props.$jumbotrons.each(function(index){
 						var thisHeight = $(this).height(),
-							contentHeight = $(this).children('.container').outerHeight();
+							contentHeight = $(this).children('.container').outerHeight(),
 							newTopPadding = '3em';
 
 						//console.log('thisHeight = ' + thisHeight);
@@ -58,7 +58,7 @@
 						//console.log(' ');
 
 						if(contentHeight < thisHeight && APP.getSiteViewType() !== 'xs' && APP.getSiteViewType() !== 'sm') {
-							newTopPadding = (thisHeight - contentHeight) / 2) + 'px';
+							newTopPadding = ((thisHeight - contentHeight) / 2) + 'px';
 						}
 						$(this).css({
 							'padding-top' : newTopPadding
