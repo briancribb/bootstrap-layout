@@ -99,7 +99,7 @@
 					//APP.props.$mainNavLinks.removeClass('disabled');
 					//$target.addClass('disabled');
 
-					console.log('Getting started. APP.props.scrolling = ' + APP.props.scrolling);
+					//console.log('Getting started. APP.props.scrolling = ' + APP.props.scrolling);
 
 					$('html,body').stop().animate(
 						{ scrollTop: $(selector).position().top },
@@ -107,7 +107,7 @@
 						function() {
 							// Only run this once. Prevent possible double-run due to the use of "html,body".
 							if(!ranOnce) {
-								console.log('All done. APP.props.scrolling = ' + APP.props.scrolling);
+								//console.log('All done. APP.props.scrolling = ' + APP.props.scrolling);
 								APP.props.scrolling = false;
 								ranOnce = true;
 							}
