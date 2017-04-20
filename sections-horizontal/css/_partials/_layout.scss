@@ -1,0 +1,65 @@
+// Layout
+// ================================
+html,body {
+	height:100%;
+}
+.site-container {
+	position:relative;
+}
+
+
+.intro {
+	padding:3rem;
+	min-height:100%;
+}
+.absolute-center {
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	z-index:1000;
+}
+
+
+
+// Main Navigation
+.main-nav, .main-nav .nav-item {
+	display:inline-block;
+}
+.main-nav {
+	text-align:center;
+	.nav {
+		display:inline-block;
+		background-color:white;
+		border-radius: 15px 15px 0 0;
+	}
+	.nav-item {
+
+	}
+	.nav-link {
+
+	}
+}
+
+
+// Main Footer
+// ================================
+.main-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: auto;
+	background-color: #acaaca;
+}
+	.main-footer-content {
+		border-top: 1px solid #337ab7;
+		padding:20px;
+	}
+
+
+
+@include media-breakpoint-up(md) {
+
+}
