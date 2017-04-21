@@ -3,14 +3,22 @@
 html,body {
 	height:100%;
 }
-.site-container {
+.app-wrap {
 	position:relative;
+
+	&.step-1 {
+		.step-1 { left:0%; }
+		.step-2 { left:100%; }
+		.step-3 { left:200%; }
+	}
 }
 
 
 .intro {
 	padding:3rem;
 	min-height:100%;
+	position:absolute;
+	width:100%;
 }
 .absolute-center {
 	position:absolute;
