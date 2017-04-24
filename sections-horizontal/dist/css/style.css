@@ -8317,6 +8317,30 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   clip: auto; }
 
 /*!
+ * IE10 viewport hack for Surface/desktop Windows 8 bug
+ * Copyright 2014-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*
+ * See the Getting Started docs for more information:
+ * http://getbootstrap.com/getting-started/#support-ie10-width
+ */
+@-webkit-viewport {
+  width: device-width; }
+
+@-moz-viewport {
+  width: device-width; }
+
+@-ms-viewport {
+  width: device-width; }
+
+@-o-viewport {
+  width: device-width; }
+
+@viewport {
+  width: device-width; }
+
+/*!
  * And now our local stuff:
  */
 .container {
@@ -8388,12 +8412,31 @@ html {
 html, body {
   height: 100%; }
 
-.site-container {
+.app-wrap {
   position: relative; }
+  .app-wrap.step-1 .step-1 {
+    left: 0%; }
+  .app-wrap.step-1 .step-2 {
+    left: 100%; }
+  .app-wrap.step-1 .step-3 {
+    left: 200%; }
+  .app-wrap.step-2 .step-1 {
+    left: -100%; }
+  .app-wrap.step-2 .step-2 {
+    left: 0%; }
+  .app-wrap.step-2 .step-3 {
+    left: 100%; }
+  .app-wrap.step-3 .step-1 {
+    left: -200%; }
+  .app-wrap.step-3 .step-2 {
+    left: -100%; }
+  .app-wrap.step-3 .step-3 {
+    left: 0%; }
 
 .intro {
   padding: 3rem;
-  min-height: 100%; }
+  position: absolute;
+  width: 100%; }
 
 .absolute-center {
   position: absolute;

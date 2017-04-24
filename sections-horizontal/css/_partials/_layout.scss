@@ -11,12 +11,21 @@ html,body {
 		.step-2 { left:100%; }
 		.step-3 { left:200%; }
 	}
+	&.step-2 {
+		.step-1 { left:-100%; }
+		.step-2 { left:0%; }
+		.step-3 { left:100%; }
+	}
+	&.step-3 {
+		.step-1 { left:-200%; }
+		.step-2 { left:-100%; }
+		.step-3 { left:0%; }
+	}
 }
 
 
 .intro {
 	padding:3rem;
-	min-height:100%;
 	position:absolute;
 	width:100%;
 }

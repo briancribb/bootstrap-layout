@@ -46,7 +46,6 @@ gulp.task('sass', function() {
 	var strFolder = getOptionIndex(process.argv);
 
 	gulp.src([
-			strFolder+'css/ie10-viewport-bug-workaround.css',
 			strFolder+'css/style.scss'
 		])
 		.pipe(sass())

@@ -36,7 +36,7 @@
 					}
 				})()
 			};
-
+			/*
 			APP.addResizeTask({
 				func: function() {
 
@@ -49,16 +49,20 @@
 
 					APP.props.$jumbotrons.each(function(index){
 						var thisHeight = $(this).height(),
-							contentHeight = $(this).children('.container').height();
+							contentHeight = $(this).children('.container').outerHeight(),
+							newTopPadding = '3em';
 
-							console.log('thisHeight = ' + thisHeight);
-							console.log('contentHeight = ' + contentHeight);
+						//console.log('thisHeight = ' + thisHeight);
+						//console.log('contentHeight = ' + contentHeight);
+						//console.log('-- difference = ' + ((thisHeight - contentHeight) / 2) );
+						//console.log(' ');
 
-						if(contentHeight < thisHeight ) {
-							$(this).css({
-								'padding-top' : ( (thisHeight - contentHeight) / 2) + 'px'
-							});
+						if(contentHeight < thisHeight && APP.getSiteViewType() !== 'xs' && APP.getSiteViewType() !== 'sm') {
+							newTopPadding = ((thisHeight - contentHeight) / 2) + 'px';
 						}
+						$(this).css({
+							'padding-top' : newTopPadding
+						});
 					});
 
 
@@ -67,6 +71,7 @@
 				},
 				args:[] // No arguments, so it's an empty array.
 			});
+			*/
 
 			APP.addListeners();
 			APP.manageResize();
@@ -95,7 +100,7 @@
 					//APP.props.$mainNavLinks.removeClass('disabled');
 					//$target.addClass('disabled');
 
-					console.log('Getting started. APP.props.scrolling = ' + APP.props.scrolling);
+					//console.log('Getting started. APP.props.scrolling = ' + APP.props.scrolling);
 
 					$('html,body').stop().animate(
 						{ scrollTop: $(selector).position().top },
@@ -103,7 +108,7 @@
 						function() {
 							// Only run this once. Prevent possible double-run due to the use of "html,body".
 							if(!ranOnce) {
-								console.log('All done. APP.props.scrolling = ' + APP.props.scrolling);
+								//console.log('All done. APP.props.scrolling = ' + APP.props.scrolling);
 								APP.props.scrolling = false;
 								ranOnce = true;
 							}
