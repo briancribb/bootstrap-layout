@@ -36,7 +36,7 @@
 					}
 				})()
 			};
-
+			/*
 			APP.addResizeTask({
 				func: function() {
 
@@ -71,6 +71,7 @@
 				},
 				args:[] // No arguments, so it's an empty array.
 			});
+			*/
 
 			APP.addListeners();
 			APP.manageResize();
@@ -116,10 +117,6 @@
 				}
 
 			});
-
-
-
-
 
 			// Scroll to a given vertical position. Used to find entries and to skip to the top or bottom.
 			function scrollToPosition(position) {

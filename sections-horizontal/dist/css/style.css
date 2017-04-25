@@ -8409,8 +8409,16 @@ html {
   html {
     font-size: 28px; } }
 
-html, body {
-  height: 100%; }
+html, body, .app-wrap {
+  height: 100%;
+  margin: 0; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  overflow: hidden; }
 
 .app-wrap {
   position: relative; }
@@ -8436,7 +8444,9 @@ html, body {
 .intro {
   padding: 3rem;
   position: absolute;
-  width: 100%; }
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll; }
 
 .absolute-center {
   position: absolute;
@@ -8446,24 +8456,22 @@ html, body {
   bottom: 0;
   z-index: 1000; }
 
+/*
 .main-nav, .main-nav .nav-item {
-  display: inline-block; }
-
+	display:inline-block;
+}
 .main-nav {
-  text-align: center; }
-  .main-nav .nav {
-    display: inline-block;
-    background-color: white;
-    border-radius: 15px 15px 0 0; }
+	text-align:center;
+	.nav {
+		display:inline-block;
+		background-color:white;
+		border-radius: 15px 15px 0 0;
+	}
+	.nav-item {
 
-.main-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: auto;
-  background-color: #acaaca; }
+	}
+	.nav-link {
 
-.main-footer-content {
-  border-top: 1px solid #337ab7;
-  padding: 20px; }
+	}
+}
+*/

@@ -36,7 +36,7 @@
 					}
 				})()
 			};
-			/*
+
 			APP.addResizeTask({
 				func: function() {
 
@@ -71,7 +71,6 @@
 				},
 				args:[] // No arguments, so it's an empty array.
 			});
-			*/
 
 			APP.addListeners();
 			APP.manageResize();
