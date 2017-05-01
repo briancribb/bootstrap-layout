@@ -48,6 +48,17 @@ body {
 	z-index:1000;
 }
 
+button.step-nav {
+	position:absolute;
+	top:0;
+	z-index:2;
+	&.prev {
+		left:0;
+	}
+	&.next {
+		right:0;
+	}
+}
 
 
 // Main Navigation

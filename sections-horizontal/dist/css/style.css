@@ -8456,6 +8456,15 @@ body {
   bottom: 0;
   z-index: 1000; }
 
+button.step-nav {
+  position: absolute;
+  top: 0;
+  z-index: 2; }
+  button.step-nav.prev {
+    left: 0; }
+  button.step-nav.next {
+    right: 0; }
+
 /*
 .main-nav, .main-nav .nav-item {
 	display:inline-block;

@@ -4,10 +4,8 @@
 		init : function() {
 			APP.props = {
 				$bodyElement		: $('body'),
-				$mainNavLinks		: $('#main-nav .nav-link'),
+				$appWrap			: $('#app-wrap'),
 				$jumbotrons			: $('.jumbotron-fluid'),
-				$mainFooter			: $('#main-footer'),
-				$mainFooterContent	: $('#main-footer-content'),
 				scrolling			: false,
 				size				: '',
 				breakpoints			: {
@@ -84,43 +82,39 @@
 			$(window).resize(throttled);
 		},
 		addListeners : function() {
-			APP.props.$mainNavLinks.on('click', function(event){
+			APP.props.$bodyElement.on('click', function(event){
 				event.preventDefault();
+				var $target = $(event.target);
 
-
-				var ranOnce = false,
-					$target = $(this);
-
-
-				// If we're not already scrolling and the link clicked isn't disabled.
-				if ( !APP.props.scrolling ) {
-					var selector = $target.data('selector');
-					APP.props.scrolling = true;
-
-					//APP.props.$mainNavLinks.removeClass('disabled');
-					//$target.addClass('disabled');
-
-					//console.log('Getting started. APP.props.scrolling = ' + APP.props.scrolling);
-
-					$('html,body').stop().animate(
-						{ scrollTop: $(selector).position().top },
-						500,
-						function() {
-							// Only run this once. Prevent possible double-run due to the use of "html,body".
-							if(!ranOnce) {
-								//console.log('All done. APP.props.scrolling = ' + APP.props.scrolling);
-								APP.props.scrolling = false;
-								ranOnce = true;
-							}
-						}
-					);
+				if ( $target.is('.step-nav.prev') ) {
+					console.log('prev');
+					setNextStep('prev');
+				}
+				if ( $target.is('.step-nav.next') ) {
+					console.log('next');
+					setNextStep('next');
 				}
 
-			});
 
-			// Scroll to a given vertical position. Used to find entries and to skip to the top or bottom.
-			function scrollToPosition(position) {
-				$('html,body').stop().animate( { scrollTop: position }, 1000 );
+
+			});
+			function setNextStep(direction) {
+				var currentStep = APP.props.$appWrap.data('step');
+				console.log('currentStep before = ' + currentStep);
+
+				if (direction === 'next') {
+					currentStep++;
+				} else {
+					currentStep--;
+				}
+
+				console.log('currentStep after = ' + currentStep);
+				currentStep = currentStep > 3		? 3					: currentStep;
+				currentStep = currentStep < 1		? 1					: currentStep;
+
+				APP.props.$appWrap.data('step', currentStep);
+				APP.props.$appWrap.removeClass('step-1 step-2 step-3').addClass('step-'+currentStep);
+				return currentStep;
 			}
 		},
 		getSiteViewType : function() {

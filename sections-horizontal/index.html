@@ -11,8 +11,11 @@
 		<link rel="stylesheet" href="dist/css/style.css">
 	</head>
 <body>
-	<div class="app-wrap step-2">
-		<div id="step-1" class="intro step-1 jumbotron-fluid bg-info">
+	<div id="app-wrap" class="app-wrap step-1" data-step="1">
+		<button type="button" class="step-nav prev btn btn-primary">Previous</button>
+		<button type="button" class="step-nav next btn btn-primary">Next</button>
+
+		<div id="step-1" class="intro step-1 jumbotron-fluid bg-info" data-step="1">
 			<div class="scroll-content">
 				<div class="container">
 					<h1 class="display-3">Step 1</h1>
@@ -38,7 +41,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="step-2" class="intro step-2 jumbotron-fluid bg-success">
+		<div id="step-2" class="intro step-2 jumbotron-fluid bg-success" data-step="2">
 			<div class="scroll-content">
 				<div class="container">
 					<h1 class="display-3">Step 2</h1>
@@ -55,7 +58,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="step-3" class="intro step-3 jumbotron-fluid bg-danger text-white">
+		<div id="step-3" class="intro step-3 jumbotron-fluid bg-danger text-white" data-step="3">
 			<div class="scroll-content">
 				<div class="container">
 					<h1 class="display-3">Step 3</h1>

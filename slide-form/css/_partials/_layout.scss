@@ -1,0 +1,74 @@
+// Layout
+// ================================
+body {
+	padding-top:2.25rem;
+}
+.site-container {
+	position:relative;
+	padding-top: 1rem;
+}
+
+.mainnav {
+	position:fixed;
+	top: 0;
+	right: -15rem;
+	width: 90%;
+	max-width: 15rem;
+	height:100%;
+	z-index:1;
+	background: #ddd;
+	ul {
+		margin:0;
+		background-color:#ccc;
+		li {
+			border-bottom:1px solid #000;
+			a {
+				padding: 1em .5em;
+				display:block;
+			}
+		}
+	}
+}
+.mainnav.open {
+	right:0;
+}
+
+
+
+
+
+
+// Main Footer
+// ================================
+.main-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: auto;
+	background-color: #acaaca;
+}
+	.main-footer-content {
+		border-top: 1px solid #337ab7;
+		padding:20px;
+	}
+
+
+
+@include media-breakpoint-up(md) {
+	body {
+		padding-top:0;
+	}
+	.site-container, .main-footer {
+		padding-right: 40%;
+	}
+	.mainnav {
+		right:0;
+		ul li a {
+			padding: .5em;
+		}
+	}
+	.mainnav {
+		width: 40%;
+	}
+}
