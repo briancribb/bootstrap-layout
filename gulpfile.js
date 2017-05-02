@@ -46,7 +46,6 @@ gulp.task('sass', function() {
 	var strFolder = getOptionIndex(process.argv);
 
 	gulp.src([
-			strFolder+'css/ie10-viewport-bug-workaround.css',
 			strFolder+'css/style.scss'
 		])
 		.pipe(sass())
@@ -64,7 +63,9 @@ gulp.task('scripts', function() {
 
 	return gulp
 		.src([
-			strFolder+'js/ie10-viewport-bug-workaround.js',
+			//'vendor/tether-1.3.3/dist/js/tether.min.js',
+			'vendor/tether-1.3.3/dist/js/tether.min.js',
+			'vendor/ie10/ie10-viewport-bug-workaround.js',
 			strFolder+'js/custom.js'
 		])
 		.pipe(concat('all.js'))
@@ -82,7 +83,7 @@ gulp.task('watch', function() {
 	console.log('watch: ' + getOptionIndex(process.argv) );
 	var strFolder = getOptionIndex(process.argv);
 	//gulp.watch(strFolder+'js/theme/*.js', ['lint', 'scripts']);
-	gulp.watch(strFolder+'js/theme/*.js', ['scripts-deferred']);
+	gulp.watch(strFolder+'js/*.js', ['scripts']);
 	gulp.watch(strFolder+'css/_partials/*.scss', ['sass']);
 	gulp.watch(strFolder+'css/_custom.scss', ['sass']);
 	gulp.watch(strFolder+'css/style.scss', ['sass']);

@@ -4,11 +4,11 @@
 		init : function() {
 			APP.props = {
 				$bodyElement		: $('body'),
-				$mainNavLinks		: $('#main-nav .nav-link'),
-				$jumbotrons			: $('.jumbotron-fluid'),
+				$topBar				: $('#topbar'),
+				$mainNav			: $('#mainnav'),
+				$mainNavToggle		: $('.mainnav-toggle a'),
 				$mainFooter			: $('#main-footer'),
 				$mainFooterContent	: $('#main-footer-content'),
-				scrolling			: false,
 				size				: '',
 				breakpoints			: {
 					xs: 0,
@@ -32,41 +32,14 @@
 					for(t in transitions){
 						if( el.style[t] !== undefined ){
 							return transitions[t];
-						}selector
+						}
 					}
 				})()
 			};
 
+
 			APP.addResizeTask({
 				func: function() {
-
-					var footerHeight = APP.props.$mainFooterContent.outerHeight(true);
-
-					// Update the height of jumbotrons.
-					APP.props.$jumbotrons.css({
-						'min-height'			: window.screen.height//$(window).height()
-					}).removeClass('absolute-center');
-
-					APP.props.$jumbotrons.each(function(index){
-						var thisHeight = $(this).height(),
-							contentHeight = $(this).children('.container').outerHeight(),
-							newTopPadding = '3em';
-
-						//console.log('thisHeight = ' + thisHeight);
-						//console.log('contentHeight = ' + contentHeight);
-						//console.log('-- difference = ' + ((thisHeight - contentHeight) / 2) );
-						//console.log(' ');
-
-						if(contentHeight < thisHeight && APP.getSiteViewType() !== 'xs' && APP.getSiteViewType() !== 'sm') {
-							newTopPadding = ((thisHeight - contentHeight) / 2) + 'px';
-						}
-						$(this).css({
-							'padding-top' : newTopPadding
-						});
-					});
-
-
-					// Update the view type.
 					APP.props.size = APP.getSiteViewType();
 				},
 				args:[] // No arguments, so it's an empty array.
@@ -83,48 +56,26 @@
 			$(window).resize(throttled);
 		},
 		addListeners : function() {
-			APP.props.$mainNavLinks.on('click', function(event){
-				event.preventDefault();
 
-
-				var ranOnce = false,
-					$target = $(this);
-
-
-				// If we're not already scrolling and the link clicked isn't disabled.
-				if ( !APP.props.scrolling ) {
-					var selector = $target.data('selector');
-					APP.props.scrolling = true;
-
-					//APP.props.$mainNavLinks.removeClass('disabled');
-					//$target.addClass('disabled');
-
-					//console.log('Getting started. APP.props.scrolling = ' + APP.props.scrolling);
-
-					$('html,body').stop().animate(
-						{ scrollTop: $(selector).position().top },
-						500,
-						function() {
-							// Only run this once. Prevent possible double-run due to the use of "html,body".
-							if(!ranOnce) {
-								//console.log('All done. APP.props.scrolling = ' + APP.props.scrolling);
-								APP.props.scrolling = false;
-								ranOnce = true;
-							}
-						}
-					);
+			// When the toggle is clicked, a CSS3 transition class is added to the main navigation. Then the "open" class
+			// is toggled to open/close the nav. This class only matters at smaller window sizes, since the nav is always 
+			// visible at larger sizes.
+			APP.props.$mainNavToggle.on(
+				'click',
+				function(ev){
+					console.log(ev);
+					APP.props.$mainNav.addClass('trans-right').toggleClass('open');
 				}
+			);
 
+			// Once the main navigation has finished opening or closing, the CSS3 transition class is removed. This 
+			// prevents the transition from happening on a resize, because that looks weird when other things are just 
+			// popping into place.
+			APP.props.$mainNav.on( APP.props.transEnd, function() {
+				console.log('Transition complete!  This is the callback, no library needed!');
+				APP.props.$mainNav.removeClass('trans-right');
 			});
 
-
-
-
-
-			// Scroll to a given vertical position. Used to find entries and to skip to the top or bottom.
-			function scrollToPosition(position) {
-				$('html,body').stop().animate( { scrollTop: position }, 1000 );
-			}
 		},
 		getSiteViewType : function() {
 			var sizes = APP.props.breakpoints,

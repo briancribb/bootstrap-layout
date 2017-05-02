@@ -1,0 +1,77 @@
+// Layout
+// ================================
+html, body {
+	height: 100%;
+	margin:0;
+}
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	//margin-bottom:60px; // Sticky footer style. Might be resized by JavaScript.
+
+	overflow-y: hidden;
+}
+
+
+.scroll-container {
+	height: 100%;
+	z-index:0;
+	overflow: hidden;
+	-webkit-overflow-scrolling: touch;
+	position:relative;
+}
+
+.scroll-content, .sidebar {
+	overflow-y:scroll;
+	position:fixed;
+	top: 0;
+	height:100%;
+}
+.site-content {
+	position:relative;
+	padding-top: 1rem;
+}
+
+.sidebar {
+	right: -15rem;
+	width: 90%;
+	max-width: 15rem;
+	z-index:1;
+	background: #ddd;
+	ul {
+		margin:0;
+		background-color:#ccc;
+		li {
+			border-bottom:1px solid #000;
+			a {
+				padding: 1em .5em;
+				display:block;
+			}
+		}
+	}
+}
+.sidebar.open {
+	right:0;
+}
+
+
+
+
+
+@include media-breakpoint-up(md) {
+	body {
+		padding-top:0;
+	}
+	.site-content {
+		margin-right: 15em;
+	}
+	.sidebar {
+		width: 15em;
+		right:0;
+		ul li a {
+			padding: .5em;
+		}
+	}
+}
