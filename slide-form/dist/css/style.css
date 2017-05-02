@@ -8370,54 +8370,59 @@ html {
   html {
     font-size: 28px; } }
 
-body {
-  padding-top: 2.25rem; }
+html, body {
+  height: 100%;
+  margin: 0; }
 
-.site-container {
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  overflow-y: hidden; }
+
+.scroll-container {
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  position: relative; }
+
+.scroll-content, .sidebar {
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  height: 100%; }
+
+.site-content {
   position: relative;
   padding-top: 1rem; }
 
-.mainnav {
-  position: fixed;
-  top: 0;
+.sidebar {
   right: -15rem;
   width: 90%;
   max-width: 15rem;
-  height: 100%;
   z-index: 1;
   background: #ddd; }
-  .mainnav ul {
+  .sidebar ul {
     margin: 0;
     background-color: #ccc; }
-    .mainnav ul li {
+    .sidebar ul li {
       border-bottom: 1px solid #000; }
-      .mainnav ul li a {
+      .sidebar ul li a {
         padding: 1em .5em;
         display: block; }
 
-.mainnav.open {
+.sidebar.open {
   right: 0; }
-
-.main-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: auto;
-  background-color: #acaaca; }
-
-.main-footer-content {
-  border-top: 1px solid #337ab7;
-  padding: 20px; }
 
 @media (min-width: 768px) {
   body {
     padding-top: 0; }
-  .site-container, .main-footer {
-    padding-right: 40%; }
-  .mainnav {
+  .site-content {
+    margin-right: 15em; }
+  .sidebar {
+    width: 15em;
     right: 0; }
-    .mainnav ul li a {
-      padding: .5em; }
-  .mainnav {
-    width: 40%; } }
+    .sidebar ul li a {
+      padding: .5em; } }

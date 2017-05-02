@@ -11,18 +11,56 @@
 		<script src="../vendor/modernizr/modernizr.custom.2.8.3.min.js"></script>
 	</head>
 <body>
-	
-	<div class="site-container ">
-		<nav id="mainnav" class="mainnav">
-			<ul class="list-unstyled">
-				<li id="menu-item-20" data-link="home" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20"><a href="#">Home</a></li>
-				<li id="menu-item-31" data-link="about" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-293 current_page_item menu-item-314"><a href="#">About</a></li>
-				<li id="menu-item-31" data-link="details" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-313"><a href="#">Details</a></li>
-			</ul>
-		</nav>
-		
-		<div class="container">
-			<article id="post-36" class="post-36 post type-post status-publish format-standard hentry category-uncategorized">
+	<div class="scroll-container">
+		<div id="sidebar" class="sidebar scroll-content">
+			<div id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="card">
+					<div class="card-header" role="tab" id="headingOne">
+						<h5 class="mb-0">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Collapsible Group Item #1
+							</a>
+						</h5>
+					</div>
+
+					<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+						<div class="card-block">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" role="tab" id="headingTwo">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								Collapsible Group Item #2
+							</a>
+						</h5>
+					</div>
+					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="card-block">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" role="tab" id="headingThree">
+						<h5 class="mb-0">
+							<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+								Collapsible Group Item #3
+							</a>
+						</h5>
+					</div>
+					<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+						<div class="card-block">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="site-content scroll-content">
+			<div class="container">
 				<header class="entry-header">
 				<h1 class="entry-title">Elements</h1>	</header><!-- .entry-header -->
 				<div class="entry-content">
@@ -194,33 +232,33 @@
 					<hr>
 					<h2 id="misc">Misc Stuff – abbr, acronym, pre, code, sub, sup, etc.</h2>
 					<p>Lorem <sup>superscript</sup> dolor <sub>subscript</sub> amet, consectetuer adipiscing elit. Nullam dignissim convallis est. Quisque aliquam. <cite>cite</cite>. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. <acronym title="National Basketball Association">NBA</acronym> Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.  <abbr title="Avenue">AVE</abbr></p>
-	<pre>
-	<p>
-	Lorem ipsum dolor sit amet,
-	consectetuer adipiscing elit.
-	Nullam dignissim convallis est.
-	Quisque aliquam. Donec faucibus. 
-	Nunc iaculis suscipit dui. 
-	Nam sit amet sem. 
-	Aliquam libero nisi, imperdiet at,
-	tincidunt nec, gravida vehicula,
-	nisl. 
-	Praesent mattis, massa quis 
-	luctus fermentum, turpis mi 
-	volutpat justo, eu volutpat 
-	enim diam eget metus. 
-	Maecenas ornare tortor. 
-	Donec sed tellus eget sapien
-	fringilla nonummy. 
-	<acronym title="National Basketball Association">NBA</acronym> 
-	Mauris a ante. Suspendisse
-	quam sem, consequat at, 
-	commodo vitae, feugiat in, 
-	nunc. Morbi imperdiet augue
-	quis tellus.  
-	<abbr title="Avenue">AVE</abbr>
-	</p>
-	</pre>
+<pre>
+<p>
+Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit.
+Nullam dignissim convallis est.
+Quisque aliquam. Donec faucibus. 
+Nunc iaculis suscipit dui. 
+Nam sit amet sem. 
+Aliquam libero nisi, imperdiet at,
+tincidunt nec, gravida vehicula,
+nisl. 
+Praesent mattis, massa quis 
+luctus fermentum, turpis mi 
+volutpat justo, eu volutpat 
+enim diam eget metus. 
+Maecenas ornare tortor. 
+Donec sed tellus eget sapien
+fringilla nonummy. 
+<acronym title="National Basketball Association">NBA</acronym> 
+Mauris a ante. Suspendisse
+quam sem, consequat at, 
+commodo vitae, feugiat in, 
+nunc. Morbi imperdiet augue
+quis tellus.  
+<abbr title="Avenue">AVE</abbr>
+</p>
+</pre>
 					<blockquote>
 						<p>This stylesheet is going to help so freaking much.</p>
 						<b class="source">Blockquote</b>
@@ -228,19 +266,9 @@
 					<p><small><a href="#wrapper">[top]</a></small><br>
 					<!-- End of Sample Content --></p>
 				</div><!-- .entry-content -->
-			</article>
-		</div>
-	</div><!-- .site-container -->
-
-	<footer id="main-footer" class="main-footer">
-		<div id="main-footer-content" class="main-footer-content">
-			<div class="container">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula tincidunt cursus. Donec ut tincidunt ligula. Proin non massa vehicula, suscipit tortor in, rhoncus metus. Vivamus condimentum diam ac diam faucibus, at suscipit odio posuere. Pellentesque et gravida quam. Pellentesque pharetra lacus lacus, a placerat neque gravida in. Donec posuere scelerisque sapien. Sed metus dolor, consequat id lorem et, pellentesque molestie massa. Nam mollis faucibus ex, id molestie felis malesuada vitae. Fusce convallis nibh tortor. Nullam posuere, nisi at feugiat mollis, elit purus auctor ante, sed dignissim nisi nunc sed augue.</p>
-
-				<p>Nam pellentesque ex eu magna malesuada, vel interdum augue cursus. Sed id ex sed nisi iaculis commodo. Praesent lobortis elementum enim a laoreet. Morbi justo nisl, commodo eget convallis quis, cursus nec nisi. Nam vitae urna sodales justo condimentum fringilla at vestibulum massa. In accumsan feugiat diam vel laoreet. Nam vel mauris purus. Ut tempor blandit magna, ut efficitur dui fermentum eu. Vestibulum molestie, leo sed fringilla posuere, sem urna accumsan est, in lacinia risus eros eget nulla. Morbi rutrum urna nec purus cursus volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
 			</div>
-		</div>
-	</footer>
+		</div><!-- /scroll-content -->
+	</div><!-- /scroll-container -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

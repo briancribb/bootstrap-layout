@@ -40,24 +40,6 @@
 
 			APP.addResizeTask({
 				func: function() {
-
-					var topBarHeight = APP.props.$topBar.outerHeight(true),
-						footerHeight = APP.props.$mainFooterContent.outerHeight(true);
-
-					APP.props.$mainFooter.height( footerHeight );
-
-					// Correct footer height upon resize and correct top body padding for navbar height
-					APP.props.$topBar.css({
-						'position'			: 'fixed',
-						'top'				: '0'
-					});
-					//APP.props.$mainNav.css({
-					//	'top'		: topBarHeight
-					//});
-					APP.props.$bodyElement.css({
-						//'padding-top'		:topBarHeight+1,
-						'padding-bottom'	:footerHeight//,
-					});
 					APP.props.size = APP.getSiteViewType();
 				},
 				args:[] // No arguments, so it's an empty array.
