@@ -67,7 +67,6 @@
 					APP.props.$mainNav.addClass('trans-right').toggleClass('open');
 				}
 			);
-
 			// Once the main navigation has finished opening or closing, the CSS3 transition class is removed. This 
 			// prevents the transition from happening on a resize, because that looks weird when other things are just 
 			// popping into place.
@@ -76,6 +75,40 @@
 				APP.props.$mainNav.removeClass('trans-right');
 			});
 
+
+			$(document).on({
+				'click': function(event) {
+					console.log('click test');
+					var $target = $(event.target);
+
+					// for toggling cards
+					if ( $target.closest('.card-header')[0] ) {
+						APP.eventTasks.toggleCard($target);
+					}
+				}
+			});
+
+
+
+		},
+		eventTasks : {
+			toggleCard : function($target) {
+				var $content = $target.closest('.card-toggle').children('.card-toggle-collapse');
+
+				// For the class to remove and the class to add.
+				var strRemove = strAdd = 'down';
+
+				if ( $content.hasClass('show') ) {
+					strAction = 'hide';
+					strRemove = 'up';
+				} else {
+					strAction = 'show';
+					strAdd = 'up';
+				}
+
+				$content.collapse( strAction ).closest('.card-toggle');
+				$target.closest('.card-toggle-header').children('.fa').removeClass( 'fa-chevron-'+strRemove ).addClass( 'fa-chevron-'+strAdd );
+			}
 		},
 		getSiteViewType : function() {
 			var sizes = APP.props.breakpoints,
