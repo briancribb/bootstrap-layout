@@ -131,7 +131,8 @@
 					strAdd = 'up';
 				}
 
-				$content.collapse( strAction ).closest('.card-toggle');
+				//$content.collapse( strAction ).closest('.card-toggle');
+				$content.toggle();
 				$target.closest('.card-toggle-header').children('.fa').removeClass( 'fa-chevron-'+strRemove ).addClass( 'fa-chevron-'+strAdd );
 			}
 		},
