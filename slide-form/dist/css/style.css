@@ -8341,13 +8341,11 @@ input {
 html, body {
   position: relative; }
 
-/*
-img[width],
+img, img[width],
 img[height] {
-	max-width: 100%;
-	height:auto;
-}
-*/
+  max-width: 100%;
+  height: auto; }
+
 /* apply a natural box layout model to all elements, but allowing components to change */
 html {
   box-sizing: border-box; }
@@ -8395,13 +8393,12 @@ body {
   height: 100%; }
 
 .site-content {
-  position: relative;
-  padding-top: 1rem; }
+  position: relative; }
 
 .sidebar {
-  right: -15rem;
+  right: -20rem;
   width: 90%;
-  max-width: 15rem;
+  max-width: 20rem;
   z-index: 1;
   background: #ddd; }
   .sidebar ul {
@@ -8416,13 +8413,45 @@ body {
 .sidebar.open {
   right: 0; }
 
-@media (min-width: 768px) {
+.preview-wrap {
+  position: absolute;
+  bottom: 1rem;
+  top: 4rem;
+  width: 100%; }
+
+.preview {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%; }
+
+@media (min-width: 576px) {
   body {
     padding-top: 0; }
   .site-content {
-    margin-right: 15em; }
+    margin-right: 16rem; }
   .sidebar {
-    width: 15em;
-    right: 0; }
-    .sidebar ul li a {
-      padding: .5em; } }
+    width: 16rem;
+    right: 0; } }
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 0; }
+  .site-content {
+    margin-right: 20rem; }
+  .sidebar {
+    width: 20rem; } }
+
+.card.fluke {
+  width: 100px;
+  display: inline-block; }
+
+.center-block {
+  margin: 0 auto;
+  display: block; }
+
+.full-height {
+  min-height: 100%; }
