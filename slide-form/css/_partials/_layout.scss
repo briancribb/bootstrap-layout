@@ -12,6 +12,11 @@ body {
 	//margin-bottom:60px; // Sticky footer style. Might be resized by JavaScript.
 
 	overflow-y: hidden;
+	&.open {
+		.sidebar {
+			right:0;
+		}
+	}
 }
 
 
@@ -23,7 +28,7 @@ body {
 	position:relative;
 }
 
-.scroll-content, .sidebar {
+.scroll-content {
 	overflow-y:scroll;
 	position:fixed;
 	top: 0;
@@ -34,11 +39,12 @@ body {
 }
 
 .sidebar {
-	right: -$sidebar-width-md;
-	width: 90%;
-	max-width: $sidebar-width-md;
+	right: -100%;
+	width: 100%;
+	max-width: 100%;
 	z-index:1;
 	background: #ddd;
+	padding-top:4rem;
 	ul {
 		margin:0;
 		background-color:#ccc;
@@ -51,31 +57,27 @@ body {
 		}
 	}
 }
-.sidebar.open {
-	right:0;
-}
 
-
-.preview-wrap {
-	position: absolute;
-	bottom: 1rem;
-	top: 4rem;
-	width:100%;
-}
-.preview {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	height: 100%;
-	width: 100%;
-}
+	.preview-wrap {
+		position: absolute;
+		bottom: 1rem;
+		top: 4rem;
+		width:100%;
+	}
+		.preview {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			height: 100%;
+			width: 100%;
+		}
 
 
 
 
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-up(md) {
 	body {
 		padding-top:0;
 	}
@@ -85,10 +87,17 @@ body {
 	.sidebar {
 		width: $sidebar-width-sm;
 		right:0;
-		//ul li a {
-		//	padding: .5em;
-		//}
+		padding-top:1rem;
 	}
+	.preview-wrap {
+		top: 1rem;
+	}
+}
+@include media-breakpoint-up(md) {
+
+
+
+
 }
 @include media-breakpoint-up(lg) {
 	body {
@@ -99,9 +108,5 @@ body {
 	}
 	.sidebar {
 		width: $sidebar-width-md;
-		//right:0;
-		//ul li a {
-		//	padding: .5em;
-		//}
 	}
 }
