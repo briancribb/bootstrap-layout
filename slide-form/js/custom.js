@@ -4,11 +4,8 @@
 		init : function() {
 			APP.props = {
 				$bodyElement		: $('body'),
-				$topBar				: $('#topbar'),
-				$mainNav			: $('#mainnav'),
-				$mainNavToggle		: $('.mainnav-toggle a'),
-				$mainFooter			: $('#main-footer'),
-				$mainFooterContent	: $('#main-footer-content'),
+				$sidebar			: $('#sidebar'),
+				$sidebarToggles		: $('.sidebar-toggler'),
 				size				: '',
 				breakpoints			: {
 					xs: 0,
@@ -60,22 +57,24 @@
 			// When the toggle is clicked, a CSS3 transition class is added to the main navigation. Then the "open" class
 			// is toggled to open/close the nav. This class only matters at smaller window sizes, since the nav is always 
 			// visible at larger sizes.
-			APP.props.$mainNavToggle.on(
+			APP.props.$sidebarToggles.on(
 				'click',
-				function(ev){
-					console.log(ev);
-					APP.props.$mainNav.addClass('trans-right').toggleClass('open');
+				function(event){
+					console.log(event.target.dataset);
+					APP.props.$sidebar.addClass('trans-right');
+					APP.props.$bodyElement.toggleClass('open');
 				}
 			);
 			// Once the main navigation has finished opening or closing, the CSS3 transition class is removed. This 
 			// prevents the transition from happening on a resize, because that looks weird when other things are just 
 			// popping into place.
-			APP.props.$mainNav.on( APP.props.transEnd, function() {
+			APP.props.$sidebar.on( APP.props.transEnd, function(event) {
+				console.log(event.target);
 				console.log('Transition complete!  This is the callback, no library needed!');
-				APP.props.$mainNav.removeClass('trans-right');
+				APP.props.$sidebar.removeClass('trans-right');
 			});
 
-
+			/*
 			$(document).on({
 				'click': function(event) {
 					console.log('click test');
@@ -87,6 +86,7 @@
 					}
 				}
 			});
+	*/
 
 
 

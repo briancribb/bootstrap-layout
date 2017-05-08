@@ -8378,6 +8378,8 @@ html {
 
 body {
   overflow-y: hidden; }
+  body.open .sidebar {
+    right: 0; }
 
 .scroll-container {
   height: 100%;
@@ -8386,7 +8388,7 @@ body {
   -webkit-overflow-scrolling: touch;
   position: relative; }
 
-.scroll-content, .sidebar {
+.scroll-content {
   overflow-y: scroll;
   position: fixed;
   top: 0;
@@ -8396,11 +8398,12 @@ body {
   position: relative; }
 
 .sidebar {
-  right: -20rem;
-  width: 90%;
-  max-width: 20rem;
+  right: -100%;
+  width: 100%;
+  max-width: 100%;
   z-index: 1;
-  background: #ddd; }
+  background: #ddd;
+  padding-top: 4rem; }
   .sidebar ul {
     margin: 0;
     background-color: #ccc; }
@@ -8409,9 +8412,6 @@ body {
       .sidebar ul li a {
         padding: 1em .5em;
         display: block; }
-
-.sidebar.open {
-  right: 0; }
 
 .preview-wrap {
   position: absolute;
@@ -8428,14 +8428,17 @@ body {
   height: 100%;
   width: 100%; }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   body {
     padding-top: 0; }
   .site-content {
     margin-right: 16rem; }
   .sidebar {
     width: 16rem;
-    right: 0; } }
+    right: 0;
+    padding-top: 1rem; }
+  .preview-wrap {
+    top: 1rem; } }
 
 @media (min-width: 992px) {
   body {
