@@ -42,17 +42,17 @@ gulp.task('lint', function() {
 
 // Compile Our Sass
 gulp.task('sass', function() {
-	console.log('sass: ' + getOptionIndex(process.argv) );
+	console.log('*!* sass: ' + getOptionIndex(process.argv) );
 	var strFolder = getOptionIndex(process.argv);
 
 	gulp.src([
-			strFolder+'css/style.scss'
+			strFolder+'src/styles/styles.scss'
 		])
 		.pipe(sass())
-		.pipe(gulp.dest(strFolder+'dist/css'))
-		.pipe(rename('style.min.css'))
+		.pipe(gulp.dest(strFolder+'dist/styles'))
+		.pipe(rename('styles.min.css'))
 		.pipe(cleanCSS())
-		.pipe(gulp.dest(strFolder+'dist/css'));
+		.pipe(gulp.dest(strFolder+'dist/styles'));
 
 });
 
@@ -66,14 +66,14 @@ gulp.task('scripts', function() {
 			//'vendor/tether-1.3.3/dist/js/tether.min.js',
 			'vendor/tether-1.3.3/dist/js/tether.min.js',
 			'vendor/ie10/ie10-viewport-bug-workaround.js',
-			strFolder+'js/custom.js'
+			strFolder+'src/scripts/scripts.js'
 		])
 		.pipe(concat('all.js'))
-		.pipe(gulp.dest(strFolder+'dist/js'))
+		.pipe(gulp.dest(strFolder+'dist/scripts'))
 		.pipe(rename('all.min.js'))
 		.pipe(uglify())
 		//.pipe(uglify().on('error', gutil.log))
-		.pipe(gulp.dest(strFolder+'dist/js'));
+		.pipe(gulp.dest(strFolder+'dist/scripts'));
 });
 
 
